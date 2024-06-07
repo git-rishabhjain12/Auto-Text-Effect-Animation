@@ -1,5 +1,5 @@
 const containerEl = document.querySelector(".container");
-const careers = ["Youtuber", "Web Developer", "Instructor"];
+const careers = ["Youtuber", "apple", "Web Developer", "Instructor"];
 let careerIndex = 0;
 let characterIndex = 0;
 
@@ -8,12 +8,18 @@ updateText();
 function updateText() {
   characterIndex++;
 
-  console.log(characterIndex);
-  containerEl.innerHTML = `<h1>I am ${
-    careers[careerIndex].slice(0, 1) === "I" ? "an" : "a"
-  } ${careers[careerIndex].slice(0, characterIndex)}</h1>`;
+  let career = careers[careerIndex];
+  let isVowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"].includes(
+    career[0]
+  );
+  const article = isVowel ? "an" : "a";
 
-  if (characterIndex === careers[careerIndex].length) {
+  containerEl.innerHTML = `<h1>I am ${article} ${career.slice(
+    0,
+    characterIndex
+  )}</h1>`;
+
+  if (characterIndex === career.length) {
     careerIndex++;
     characterIndex = 0;
   }
